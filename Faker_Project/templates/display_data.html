@@ -1,0 +1,75 @@
+
+<html>
+   <head>
+       <title>Display data</title>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+       <style>
+           td:hover{
+               background-color: yellow;
+               color: red;
+           }
+           th:hover{
+               background-color: deeppink;
+               color: white;
+           }
+       </style>
+   </head>
+   <body>
+    <div class="container">
+        {% if employee_list %}
+         <div class="table-responsive">
+           <table class="table table-hover table-bordered table-striped table-dark">
+              <thead class="bg-success">
+                 <tr>
+                     <th>Firstname</th>
+                     <th>Lastname</th>
+                     <th>Username</th>
+                     <th>Mobile</th>
+                     <th>Email</th>
+                     <th>City</th>
+                     <th>Role</th>
+                     <th>Salary</th>
+                 </tr>
+              </thead>
+              {% for employee in employee_list %}
+                 <tbody>
+                   <tr>
+                       <td>{{ employee.first_name }}</td>
+                       <td>{{ employee.last_name }}</td>
+                       <td>{{ employee.username }}</td>
+                       <td>{{ employee.mobile }}</td>
+                       <td>{{ employee.email }}</td>
+                       <td>{{ employee.city }}</td>
+                       <td>{{ employee.role }}</td>
+                       <td>{{ employee.salary }}</td>
+                   </tr>
+                 </tbody>
+              {% endfor %}
+               <thead class="bg-success">
+               <tr>
+                   <th>Firstname</th>
+                   <th>Lastname</th>
+                   <th>Username</th>
+                   <th>Mobile</th>
+                   <th>Email</th>
+                   <th>City</th>
+                   <th>Role</th>
+                   <th>Salary</th>
+               </tr>
+               </thead>
+           </table>
+         </div>
+            <h1>Total number of employees are : {{ count }}</h1>
+            <h1>Total Managers count is : {{ managers }}</h1>
+        {% else %}
+          <h1>Fake data not available</h1>
+        {% endif %}
+    </div>
+   </body>
+</html>
